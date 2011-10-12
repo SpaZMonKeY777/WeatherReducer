@@ -1,11 +1,16 @@
-author: Anthony Phelps
-database: false
-main: me.aphelps.plugins.WhoNeedsWeather.WhoNeedsWeather
-name: Who Needs Weather
-startup: postworld
-version: 0.0.1
+name: WeatherReducer
+main: me.aphelps.plugins.WeatherReducer.WeatherReducer
+version: 2.0.0
 commands:
    wr:
       description: Basic command for altering settings.
-      permission: WhoNeedsWeather.wr
-      usage: /<command>
+      permission: WeatherReducer.wr
+      usage: /<command> <percent>
+permissions:
+   WeatherReducer.*:
+      description: Gives access to all WeatherReducer Commands
+      children:
+         WeatherReducer.wr: true
+   WeatherReducer.wr:
+      description: used to alter the percentage
+      default: op
