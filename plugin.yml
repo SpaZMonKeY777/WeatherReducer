@@ -1,16 +1,16 @@
 name: WeatherReducer
 main: me.aphelps.plugins.WeatherReducer.WeatherReducer
-version: 2.0.0
+version: 210
 commands:
    wr:
       description: Basic command for altering settings.
       permission: WeatherReducer.wr
-      usage: /<command> <percent>
+      usage: /<command> [show|change <percent>]
 permissions:
    WeatherReducer.*:
       description: Gives access to all WeatherReducer Commands
       children:
          WeatherReducer.wr: true
    WeatherReducer.wr:
-      description: used to alter the percentage
+      description: used to alter or view the percentage
       default: op

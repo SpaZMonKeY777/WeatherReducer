@@ -38,31 +38,50 @@ public class WeatherReducer extends JavaPlugin
     {
     	if(cmd.getName().equalsIgnoreCase("wr"))
     	{
-    		if(args.length == 1)
-    		{
-    			if(sender.hasPermission("WeatherReducer.wr"))
-    			{
-	    			try
+			if(sender.hasPermission("WeatherReducer.wr"))
+			{
+	    		if(args.length == 2)
+	    		{
+	    			if(args[0].equals("change"))
 	    			{
-	    				double ch = Double.parseDouble(args[0]);
-	    				wrwl.setChance(ch);
-	    				CONFIG.setProperty("chance", ch);
-	    				CONFIG.save();
-	    				sender.sendMessage("WeatherReducer: You've changed the chance of weather to " + args[0]);
-	    				log.info("WeatherReducer: " + sender.getName() + " changed the chance of weather to " + args[0]);
+		    			try
+		    			{
+		    				double ch = Double.parseDouble(args[1]);
+		    				wrwl.setChance(ch);
+		    				CONFIG.setProperty("chance", ch);
+		    				CONFIG.save();
+		    				sender.sendMessage("WeatherReducer: You've changed the chance of weather to " + args[1]);
+		    				log.info("WeatherReducer: " + sender.getName() + " changed the chance of weather to " + args[1]);
+		    			}
+		    			catch(NumberFormatException nfe){sender.sendMessage("WeatherReducer: The number you entered was invalid.");}
+		    			catch(Exception e){sender.sendMessage("WeatherReducer: The command you entered was invalid.");}
+		        		return true;
 	    			}
-	    			catch(NumberFormatException nfe){sender.sendMessage("WeatherReducer: The number you entered was invalid.");}
-	    			catch(Exception e){sender.sendMessage("WeatherReducer: The command you entered was invalid.");}
-	        		return true;
+	        		else
+	        		{
+	        			sender.sendMessage("WeatherReducer: The command you entered was invalid.");
+	        		}
     			}
+	    		else if(args.length == 1)
+	    		{
+	    			if(args[0].equals("show"))
+	    			{
+	    				sender.sendMessage("WeatherReducer: The current chance of weather is " + CONFIG.getProperty("chance"));
+	    				return true;
+	    			}
+	    			else
+	    			{
+	    				sender.sendMessage("WeatherReducer: The command you entered was invalid.");
+	    			}
+	    		}
     			else
     			{
-    				sender.sendMessage("WeatherReducer: You do not have permission to use this command.");
+    				sender.sendMessage("WeatherReducer: The command you entered was invalid.");
     			}
     		}
     		else
     		{
-    			sender.sendMessage("WeatherReducer: The command you entered was invalid.");
+    			sender.sendMessage("WeatherReducer: You do not have permission to use this command.");
     		}
     	} 
     	return false; 
