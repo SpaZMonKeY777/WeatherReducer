@@ -2,35 +2,31 @@ package me.aphelps.plugins.WeatherReducer;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.event.Event;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.util.config.Configuration;
 
 import java.util.logging.*;
 
 public class WeatherReducer extends JavaPlugin
 {
 	protected Logger log = Logger.getLogger("Minecraft");
-	protected static Configuration CONFIG;
 	private WRWeatherListener wrwl;
 
 	
     public void onEnable()
     { 	
-    	CONFIG = getConfiguration();
-    	double num = CONFIG.getDouble("chance", 1.0);
+    	double num = getConfig().getDouble("chance", 1.0);
     	wrwl = new WRWeatherListener(this, num);
     	PluginManager pm = this.getServer().getPluginManager();
     	
-    	pm.registerEvent(Event.Type.WEATHER_CHANGE, wrwl, Event.Priority.Normal, this);
+    	pm.registerEvents(wrwl, this);
     	
         log.info(this + " is now enabled!");
     }
 
     public void onDisable()
     {
-    	CONFIG.save();
+    	saveConfig();
         log.info(this + " is now disabled!");
     }
     
@@ -48,8 +44,8 @@ public class WeatherReducer extends JavaPlugin
 		    			{
 		    				double ch = Double.parseDouble(args[1]);
 		    				wrwl.setChance(ch);
-		    				CONFIG.setProperty("chance", ch);
-		    				CONFIG.save();
+		    				getConfig().set("chance", ch);
+		    				saveConfig();
 		    				sender.sendMessage("WeatherReducer: You've changed the chance of weather to " + args[1]);
 		    				log.info("WeatherReducer: " + sender.getName() + " changed the chance of weather to " + args[1]);
 		    			}
@@ -66,7 +62,7 @@ public class WeatherReducer extends JavaPlugin
 	    		{
 	    			if(args[0].equals("show"))
 	    			{
-	    				sender.sendMessage("WeatherReducer: The current chance of weather is " + CONFIG.getProperty("chance"));
+	    				sender.sendMessage("WeatherReducer: The current chance of weather is " + getConfig().getString("chance"));
 	    				return true;
 	    			}
 	    			else

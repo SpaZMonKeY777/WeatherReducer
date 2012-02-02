@@ -1,9 +1,10 @@
 package me.aphelps.plugins.WeatherReducer;
 
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.weather.WeatherChangeEvent;
-import org.bukkit.event.weather.WeatherListener;
 
-public class WRWeatherListener extends WeatherListener 
+public class WRWeatherListener implements Listener 
 {
 	private WeatherReducer plugin;
 	private double chance;
@@ -14,6 +15,7 @@ public class WRWeatherListener extends WeatherListener
 		this.chance = num;
 	}
 	
+	@EventHandler
 	public void onWeatherChange(WeatherChangeEvent event)
 	{
 		if(!event.isCancelled() && event.toWeatherState())
