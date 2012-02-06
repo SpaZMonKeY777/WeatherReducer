@@ -1,9 +1,11 @@
-notes:
-author:neofu50
-date:10/11/11 Tuesday
-for:WeatherReducer
----WeatherReducer
-	- WeatherReducer is Licensed under the GPL V.3.0 A copy of which is available in the file "gpl-3.0.txt"
+doc:
+author: neofu50
+date: 10/11/11 Tuesday
+for: WeatherReducer
+--- WeatherReducer
+	- WeatherReducer is Licensed under the GPL V.3.0 A copy of which is available in the file "LICENSE"
+	-- Version 2.1.1
+		- Removed/fixed deprecated Bukkit API calls.
 	-- Version 2.1.0
 		- Changed commands. They are now the following.
 			- /wr change <percent>
