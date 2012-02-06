@@ -2,7 +2,6 @@ package me.aphelps.plugins.WeatherReducer;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.logging.*;
@@ -17,9 +16,8 @@ public class WeatherReducer extends JavaPlugin
     { 	
     	double num = getConfig().getDouble("chance", 1.0);
     	wrwl = new WRWeatherListener(this, num);
-    	PluginManager pm = this.getServer().getPluginManager();
     	
-    	pm.registerEvents(wrwl, this);
+    	this.getServer().getPluginManager().registerEvents(wrwl, this);
     	
         log.info(this + " is now enabled!");
     }
