@@ -1,6 +1,6 @@
 name: WeatherReducer
 main: me.aphelps.plugins.WeatherReducer.WeatherReducer
-version: 2.1.1
+version: 2.2
 commands:
    wr:
       description: Basic command for altering settings.
