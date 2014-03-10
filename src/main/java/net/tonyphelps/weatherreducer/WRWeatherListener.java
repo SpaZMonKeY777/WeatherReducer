@@ -1,4 +1,4 @@
-package me.aphelps.plugins.WeatherReducer;
+package net.tonyphelps.weatherreducer;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

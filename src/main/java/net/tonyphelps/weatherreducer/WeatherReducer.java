@@ -1,4 +1,4 @@
-package me.aphelps.plugins.WeatherReducer;
+package net.tonyphelps.weatherreducer;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
