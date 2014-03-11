@@ -1,5 +1,5 @@
 name: WeatherReducer
-main: me.aphelps.plugins.WeatherReducer.WeatherReducer
+main: net.tonyphelps.weatherreducer.WeatherReducer
 version: 2.2
 commands:
    wr:
