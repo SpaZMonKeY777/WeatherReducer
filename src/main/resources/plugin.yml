@@ -1,6 +1,6 @@
 name: WeatherReducer
 main: net.tonyphelps.weatherreducer.WeatherReducer
-version: 2.2
+version: 2.1.5
 commands:
    wr:
       description: Basic command for altering settings.
